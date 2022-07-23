@@ -5,12 +5,12 @@ import java.util.EmptyStackException;
 import com.virtusa.ValidParentheses.model.CustomStack;
 import com.virtusa.ValidParentheses.model.Node;
 
-public class CustomStackService {
+public class CustomStackService implements CustomStackServiceInterface{
 	
 	private CustomStack stack;
 	
-	public CustomStackService() {
-		stack = new CustomStack();
+	public CustomStackService(CustomStack stack) {
+		this.stack = stack;
 	}
 	
 	public void push(char value) {
@@ -54,6 +54,10 @@ public class CustomStackService {
 		else {
 			return false;
 		}
+	}
+	
+	public int size() {
+		return stack.getSize();
 	}
 	
 }

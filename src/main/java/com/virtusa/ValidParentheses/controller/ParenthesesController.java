@@ -6,8 +6,8 @@ public class ParenthesesController {
 	
 	private ParenthesesService parenthesesService;
 	
-	public ParenthesesController() {
-		parenthesesService = new ParenthesesService();
+	public ParenthesesController(ParenthesesService parenthesesService) {
+		this.parenthesesService = parenthesesService;
 	}
 	
 	public boolean validateUserParentheses(String str) {

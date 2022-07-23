@@ -4,33 +4,27 @@ import java.util.EmptyStackException;
 
 public class ParenthesesService {
 	
-	private CustomStackService customStackService;
-	
-	public ParenthesesService() {
-		customStackService = new CustomStackService();
+	private CustomStackServiceInterface customStackService;
+			
+	public ParenthesesService(CustomStackServiceInterface customStackService) {
+		this.customStackService = customStackService;
 	}
-	
-	public boolean checkParentheses(String str) {
-		
-		for(int i=0;i<str.length();i++) {
-			
+
+	public boolean checkParentheses(String str) {				
+		for(int i=0;i<str.length();i++) {		
 			char temp = str.charAt(i);
-			
 			if(temp=='(' || temp=='{' || temp =='[') {
 				customStackService.push(temp);
-			}
-			
+			}			
 			else if(temp==')' || temp=='}' || temp==']') {
-				if(isMatchingBrackets(temp)) {
+				if(isMatchingBracket(temp)) {
 					continue;
 				}
 				else {
 					return false;
 				}
-			}
-			
-		}
-		
+			}	
+		}		
 		if(!customStackService.isEmpty()) {
 			return false;
 		}
@@ -39,9 +33,7 @@ public class ParenthesesService {
 		}
 	}
 
-
-	private boolean isMatchingBrackets(char value) {
-		
+	public boolean isMatchingBracket(char value) {		
 		try {			
 			char tempChar = customStackService.pop();
 			if(tempChar=='(' && value==')') {
@@ -59,8 +51,6 @@ public class ParenthesesService {
 		}
 		catch(EmptyStackException e) {
 			return false;
-		}
-		
+		}		
 	}
-	
 }
