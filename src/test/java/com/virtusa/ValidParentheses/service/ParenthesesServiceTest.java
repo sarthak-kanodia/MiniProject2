@@ -2,6 +2,7 @@ package com.virtusa.ValidParentheses.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -9,6 +10,8 @@ import static org.mockito.Mockito.when;
 import java.util.EmptyStackException;
 
 import org.junit.Test;
+
+import com.virtusa.ValidParentheses.model.CustomStack;
 
 
 public class ParenthesesServiceTest 
@@ -23,8 +26,6 @@ public class ParenthesesServiceTest
 		when(customStackServiceInterface.isEmpty()).thenReturn(true);
 		assertEquals(true, parenthesesService.checkParentheses(""));
 	}
-	
-	
 	
 	@Test
 	public void isMatchingBracket_ReturnsTrue_ForMatchingBrackets()
@@ -62,5 +63,40 @@ public class ParenthesesServiceTest
 	
 	}
 	
-    
+	@Test
+	public void checkParentheses_ReturnsTrue_String1()
+	{    	
+		CustomStack stack1 = new CustomStack();
+		CustomStackServiceInterface customStackServiceInterface = new CustomStackService(stack1);
+		parenthesesService = new ParenthesesService(customStackServiceInterface);
+		assertEquals(true, parenthesesService.checkParentheses("[{()}]"));
+	}
+	
+	@Test
+	public void checkParentheses_ReturnsFalse_String2()
+	{    	
+		CustomStack stack1 = new CustomStack();
+		CustomStackServiceInterface customStackServiceInterface = new CustomStackService(stack1);
+		parenthesesService = new ParenthesesService(customStackServiceInterface);
+		assertEquals(false, parenthesesService.checkParentheses("()}]"));
+	}
+	
+	@Test
+	public void checkParentheses_ReturnsFalse_String3()
+	{    	
+		CustomStack stack1 = new CustomStack();
+		CustomStackServiceInterface customStackServiceInterface = new CustomStackService(stack1);
+		parenthesesService = new ParenthesesService(customStackServiceInterface);
+		assertEquals(false, parenthesesService.checkParentheses("[{)}]"));
+	}
+	
+	@Test
+	public void checkParentheses_ReturnsFalse_String4()
+	{    	
+		CustomStack stack1 = new CustomStack();
+		CustomStackServiceInterface customStackServiceInterface = new CustomStackService(stack1);
+		parenthesesService = new ParenthesesService(customStackServiceInterface);
+		assertEquals(false, parenthesesService.checkParentheses("[{()}"));
+	}
+	    
 }
