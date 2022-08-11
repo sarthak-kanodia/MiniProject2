@@ -1,10 +1,11 @@
 package com.virtusa.ValidParentheses.controller;
 
 import com.virtusa.ValidParentheses.service.ParenthesesService;
+import com.virtusa.ValidParentheses.service.ParenthesesServiceInterface;
 
 public class ParenthesesController {
 	
-	private ParenthesesService parenthesesService;
+	private ParenthesesServiceInterface parenthesesService;
 	
 	public ParenthesesController(ParenthesesService parenthesesService) {
 		this.parenthesesService = parenthesesService;

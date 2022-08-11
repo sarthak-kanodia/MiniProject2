@@ -2,7 +2,7 @@ package com.virtusa.ValidParentheses.service;
 
 import java.util.EmptyStackException;
 
-public class ParenthesesService {
+public class ParenthesesService implements ParenthesesServiceInterface {
 	
 	private CustomStackServiceInterface customStackService;
 			

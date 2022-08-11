@@ -54,6 +54,9 @@ public class CustomStackServiceTest
     	
        	CustomStack customStack = spy(CustomStack.class);
     	customStackService = new CustomStackService(customStack);
+    	
+    	assertEquals(0, customStackService.size());
+    	
         customStackService.push('a');
         customStackService.push('b');
     	   	
@@ -84,6 +87,5 @@ public class CustomStackServiceTest
         customStackService.push('c');
         assertEquals('c', customStackService.pop());
     }
-//  Test comment to check feature branch   
-    
+      
 }
